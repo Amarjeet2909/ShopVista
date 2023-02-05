@@ -1,4 +1,7 @@
+// In this file I'm defining all the functions related to product
+
 const Product = require("../models/productModel");
+const ErrorHandler = require("../utils/errorHandler");
 
 
 // creating a product --Admin
@@ -64,18 +67,15 @@ exports.deleteProduct = async(req,res,next) =>{
 } 
 
 // Get a Product
-exports.getProductDetail = async(req,res,next) =>{
+exports.getProductDetails = async(req,res,next) =>{
     const product = await Product.findById(req.params.id);
 
     if(!product){
-        return res.status(500).json({
-            success: false,
-            message: "Product not Found"
-        })
+        return next(new ErrorHandler("Product not Found", 404));
     }
 
     res.status(200).json({
         success: true,
         product
-    })
-}
+    });
+};
