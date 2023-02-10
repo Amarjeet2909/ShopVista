@@ -5,8 +5,10 @@ app.use(express.json());
 
 // Importing the routes
 const product = require("./routes/productRoute");
+const user = require("./routes/userRoute");
 
 app.use("/api/v1",product);
+app.use("/api/v1",user);
 
 // Accessing Middleware folder for handling error
 app.use(errorMiddleware);
