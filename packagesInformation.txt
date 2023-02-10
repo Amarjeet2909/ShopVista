@@ -1,0 +1,12 @@
+Packages used & Installed in this Project:-
+--------------------------------------------------------------------------------------
+npm i express:
+npm i mongoose
+npm i env
+npm i dotenv
+npm i bcryptjs:- for hashing the users login information so it can't be seen by admin also
+npm i jsonwebtoken:- for generating tokens
+npm i validator:- to validate the fields for eg the email field should contain the email address type data only
+npm i nodemailer:- for password reset process
+npm i cookie-parser:- for storing JSON web token in cookies
+npm i body-parser:- Body-parser parses is an HTTP request body that usually helps when you need to know more than just the URL being hit.
