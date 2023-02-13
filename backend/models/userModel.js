@@ -61,5 +61,17 @@ userSchema.pre("save", async function (next) {
 });
 
 
+/**
+ * JWT Token: Below function creates a Token which kept user log in with a assigned _id of user
+ * process.env.JWT_SECRET: it's a key which should'nt revealed otherwise anyone can make many fake admin accounts
+ * getJWTToken is also a Inbult fun
+ * expiresIn is a attribute which takes care of log in session time one can't be log in forever
+ */
+userSchema.methods.getJWTToken = function() {
+    return jwt.sign({ id: this._id },process.env.JWT_SECRET, {
+        expiresIn: process.env.JWT_EXPIRE,
+    });
+};
+
 
 module.exports = mongoose.model("User", userSchema);
