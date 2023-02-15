@@ -62,10 +62,11 @@ userSchema.pre("save", async function (next) {
 
 
 /**
- * JWT Token: Below function creates a Token which kept user log in with a assigned _id of user
+ * JSON Web Token(JWT Token): Below function creates a Token which kept user log in with a assigned _id of user
  * process.env.JWT_SECRET: it's a key which should'nt revealed otherwise anyone can make many fake admin accounts
  * getJWTToken is also a Inbult fun
  * expiresIn is a attribute which takes care of log in session time one can't be log in forever
+ * JWT_SECRET & JWT_EXPIRE is variable declared in config.env
  */
 userSchema.methods.getJWTToken = function() {
     return jwt.sign({ id: this._id },process.env.JWT_SECRET, {
@@ -73,5 +74,15 @@ userSchema.methods.getJWTToken = function() {
     });
 };
 
+
+/**
+ * Compare Password Function
+ * Since enteredPassword is in hash format so it has to be compared using bcrypt.compare method which will compare hash
+ * values by converting them. this.password is password save in DB for that user
+ */
+userSchema.methods.comparePassword = async function (enteredPassword) 
+{
+    return await bcrypt.compare(enteredPassword, this.password);
+}
 
 module.exports = mongoose.model("User", userSchema);
