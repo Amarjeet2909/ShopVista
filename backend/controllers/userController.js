@@ -1,6 +1,7 @@
 const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const User = require("../models/userModel");
+const sendToken = require("../utils/jwtToken");
 
 // Function for registering a User
 exports.registerUser = catchAsyncErrors(async(req,res,next) => {
@@ -16,13 +17,8 @@ exports.registerUser = catchAsyncErrors(async(req,res,next) => {
         },
     });
 
-    // calling getJWTToken fun of userModel.js for creating user Token
-    const token = user.getJWTToken();
-
-    res.status(201).json({
-        success: true,
-        token,
-    });
+    // calling sendToken fun of jwtToken.js for token creation and saving in cookie
+    sendToken(user, 201, res);
 
 });
 
@@ -51,11 +47,19 @@ exports.loginUser = catchAsyncErrors(async (req,res,next) => {
         return next("Invalid email or password", 401);
     }
 
-    // Generating the token for the user since user has been find in DB
-    const token = user.getJWTToken();
+    // calling sendToken fun of jwtToken.js for token creation and saving in cookie since user has been find in DB
+    sendToken(user, 200, res);
+});
+
+// Log Out function
+exports.logout = catchAsyncErrors(async (req,res,next) => {
+    res.cookie("token", null, {
+        expires: new Date(Date.now()),
+        httpOnly: true,
+    });
 
     res.status(200).json({
         success: true,
-        token,
+        message: "Logged Out Successfully!",
     });
 });
