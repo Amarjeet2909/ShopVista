@@ -91,3 +91,62 @@ exports.getProductDetails = catchAsyncErrors(async (req,res,next) =>{
         product,
     });
 });
+
+
+// Creating new review or update the review
+exports.createProductReview = catchAsyncErrors(async(req,res,next) => {
+    // taking details from req.body needed for review
+    const { rating, comment, productId } = req.body;
+
+    // craeting an object of review fields
+    const review = {
+        user: req.user._id,
+        name: req.user.name,
+        rating: Number(rating), // Number() will convert string into number
+        comment,
+    };
+
+    // Finding product using productId got through req.body
+    const product = await Product.findById(productId);
+
+    /* Checking if product is already reviewed by user or not 
+       reviews is an Array in product Schema so find() can be applied on it
+       rev is just a variable | rev.user will give ID of user that has rated the product
+       So, In below statement that user Id and current user Id is being compared which is currently going to rate it.
+    */
+    const isReviewed = product.reviews.find(
+        (rev) => rev.user.toString() === req.user._id.toString()
+    );
+
+    // If alraedy reviewed then search the review of that user in reviews array and simply update the rating and comment
+    if(isReviewed)
+    {
+        product.reviews.forEach((rev) => {
+            if(rev.user.toString() === req.user._id.toString())
+            {
+                (rev.rating = rating), (rev.comment = comment);
+            }
+        });
+    }
+    else
+    {
+        // If not already reviewed then push review object into reviews array also update noOfReviews field
+        product.reviews.push(review);
+        product.noOfReviews = product.reviews.length;
+    }
+
+    // Average calculation of ratings for the product
+    let avg = 0;
+
+    product.reviews.forEach((rev) => {
+        avg += Number(rev.rating);
+    });
+
+    product.ratings = avg / product.reviews.length;
+
+    await product.save({validateBeforeSave: false});
+
+    res.status(200).json({
+        success: true,
+    });
+});
