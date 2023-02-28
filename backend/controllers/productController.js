@@ -4,6 +4,7 @@ const Product = require("../models/productModel");
 const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const ApiFeatures = require("../utils/apifeatures");
+const { findByIdAndUpdate } = require("../models/userModel");
 
 
 // creating a product --Admin
@@ -144,7 +145,74 @@ exports.createProductReview = catchAsyncErrors(async(req,res,next) => {
 
     product.ratings = avg / product.reviews.length;
 
+    // saving the changes happend in product
     await product.save({validateBeforeSave: false});
+
+    res.status(200).json({
+        success: true,
+    });
+});
+
+// Get All reviews of a product
+exports.getProductReviews = catchAsyncErrors(async(req,res,next) => {
+    // finding product in db using id
+    const product = await Product.findById(req.query.id);
+
+    if(!product)
+    {
+        return next(new ErrorHandler("Product not found", 404));
+    }
+
+    res.status(200).json({
+        success: true,
+        // responding with reviews array of the product
+        reviews: product.reviews,
+    });
+});
+
+// Delete Review
+exports.deleteReview = catchAsyncErrors(async(req,res,next) => {
+    // finding the product using productId for which review has to be deleted
+    const product = await Product.findById(req.query.productId);
+
+    if(!product)
+    {
+        return next(new ErrorHandler("Product not found", 404));
+    }
+
+    const reviews = product.reviews.filter(
+        (rev) => rev._id.toString() !== req.query.id.toString()
+    );
+
+    let avg=0;
+
+    reviews.forEach((rev) => {
+        avg += rev.rating;
+    });
+
+    let ratings = 0;
+
+    if(reviews.length === 0){
+        ratings=0;
+    } else {
+        ratings = avg / reviews.length;
+    }
+
+    const noOfReviews = reviews.length;
+
+    await Product.findByIdAndUpdate(
+        req.query.productId,
+        {
+            reviews,
+            ratings,
+            noOfReviews,
+        },
+        {
+            new: true,
+            runValidators: true,
+            useFindAndModify: false,
+        }
+    );
 
     res.status(200).json({
         success: true,

@@ -2,7 +2,7 @@
 
 const express = require("express");
 // names inside the const are the names of function
-const { getAllProducts, createProduct, updateProduct, deleteProduct, getProductDetails, createProductReview } = require("../controllers/productController");
+const { getAllProducts, createProduct, updateProduct, deleteProduct, getProductDetails, createProductReview, getProductReviews, deleteReview } = require("../controllers/productController");
 
 const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
 
@@ -18,6 +18,8 @@ router.route("/product/:id").get(getProductDetails);
 
 // Route for new Review or update Review
 router.route("/review").put(isAuthenticatedUser, createProductReview);
+
+router.route("/reviews").get(getProductReviews).delete(isAuthenticatedUser, deleteReview);
 
 
 module.exports = router
