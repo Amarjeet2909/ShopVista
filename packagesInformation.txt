@@ -15,3 +15,8 @@ npm i body-parser:- Body-parser parses is an HTTP request body that usually help
 Starting with frontend:-
 
  npx create-react-app . :- To create React App (Given . because we want to craete the app just inside our frontend folder)
+ npm start :- To start the React Server
+ npm i axios react-alert react-alert-template-basic :- To fetch data from backend
+ npm i react-helmet :- to keep diff title of diff Pages
+ npm i react-redux redux redux-thunk redux-devtools-extension :-
+ npm i raect-router-dom  overlay-navbar :-
