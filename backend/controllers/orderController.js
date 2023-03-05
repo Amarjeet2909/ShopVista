@@ -72,10 +72,13 @@ exports.myOrders = catchAsyncErrors(async (req,res,next) => {
 
 // Get all orders --Admin
 exports.getAllOrders = catchAsyncErrors(async (req,res,next) => {
+    // It will give all the orders in DB
     const orders = await Order.find();
 
+    // Taking it to show to the admin that how much total amount of orders has been done
     let totalAmount = 0;
 
+    // For each loop to add price of every order found in DB to totalAmount
     orders.forEach((order) => {
         totalAmount += order.totalPrice;
     });
@@ -94,17 +97,20 @@ exports.updateOrder = catchAsyncErrors(async (req,res,next) => {
     if(!order) {
         return next(new ErrorHandler("Order not found with this Id", 404));
     }
-
+    // If order status has been already updated to Delivered 
     if(order.orderStatus === "Delivered") {
         return next(new ErrorHandler("You have already delivered this order",400));
     }
 
+    // Work of this loop is to decrement the stock of the product after successful delivery
     order.orderItems.forEach(async(order) => {
         await updateStock(order.product, order.quantity);
     });
 
+    // orderStatus will be taken from body
     order.orderStatus = req.body.status;
 
+    // To update delivered time
     if(req.body.status === "Delivered") {
         order.deliveredAt = Date.now();
     }
@@ -116,9 +122,11 @@ exports.updateOrder = catchAsyncErrors(async (req,res,next) => {
     });
 });
 
+// Function which is call inside update Order status fun
 async function updateStock(id, quantity) {
     const product = await Product.findById(id);
 
+    // Substracting the stock value of product by quantity of that product delivered in particular order
     product.stock -= quantity;
 
     await product.save({ validateBeforeSave: false });
@@ -132,6 +140,7 @@ exports.deleteOrder = catchAsyncErrors(async (req,res,next) => {
         return next(new ErrorHandler("Order not found with this Id", 404));
     }
 
+    // remove() fun
     await order.remove();
 
     res.status(200).json({
