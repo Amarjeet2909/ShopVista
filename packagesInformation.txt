@@ -20,3 +20,5 @@ Starting with frontend:-
  npm i react-helmet :- to keep diff title of diff Pages
  npm i react-redux redux redux-thunk redux-devtools-extension :-
  npm i raect-router-dom  overlay-navbar :-
+ npm install react-icons :- To Install Icons available in react
+ npm i webfontloader :-
