@@ -40,6 +40,11 @@ exports.newOrder = catchAsyncErrors(async(req,res,next) => {
 // Get Single Order
 exports.getSingleUser = catchAsyncErrors(async (req,res,next) => {
 
+    /**
+     * Population is the process of replacing the specified path in the document of one collection with the actual
+     * document from the other collection.
+     * Here, after finding the order by order id it will search in user DB with id of user and will give name and email of the user.
+     */
     const order = await Order.findById(req.params.id).populate(
         "user",
         "name email"
@@ -52,5 +57,15 @@ exports.getSingleUser = catchAsyncErrors(async (req,res,next) => {
     res.status(200).json({
         success: true,
         order,
+    });
+});
+
+// Get all orders of logged in users
+exports.myOrders = catchAsyncErrors(async (req,res,next) => {
+    const orders = await Order.find({user: req.user._id});
+
+    res.status(200).json({
+        success: true,
+        orders,
     });
 });
