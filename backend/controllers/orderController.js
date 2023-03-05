@@ -89,7 +89,11 @@ exports.getAllOrders = catchAsyncErrors(async (req,res,next) => {
 
 // update Order Status --Admin
 exports.updateOrder = catchAsyncErrors(async (req,res,next) => {
-    const order = await Order.find(req.params.id);
+    const order = await Order.findById(req.params.id);
+
+    if(!order) {
+        return next(new ErrorHandler("Order not found with this Id", 404));
+    }
 
     if(order.orderStatus === "Delivered") {
         return next(new ErrorHandler("You have already delivered this order",400));
@@ -119,3 +123,18 @@ async function updateStock(id, quantity) {
 
     await product.save({ validateBeforeSave: false });
 }
+
+// Delete order --Admin
+exports.deleteOrder = catchAsyncErrors(async (req,res,next) => {
+    const order = await Order.findById(req.params.id);
+
+    if(!order) {
+        return next(new ErrorHandler("Order not found with this Id", 404));
+    }
+
+    await order.remove();
+
+    res.status(200).json({
+        success: true,
+    });
+});
