@@ -1,8 +1,9 @@
 import './App.css';
 import Header from "./component/layout/Header.js";
-import React, { Component }  from 'react';
+import React from 'react';
 import { BrowserRouter as Router } from "react-router-dom";
 import WebFont from "webfontloader";
+import Footer from "./component/layout/Footer/Footer.js";
 
 function App() {
 
@@ -17,6 +18,8 @@ function App() {
   return (
     <Router>
       <Header />
+
+      <Footer />
     </Router>
   );
 }
