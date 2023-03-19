@@ -15,6 +15,7 @@ function App() {
     });
   }, []);
 
+  // Returning Header and Footer file imported above
   return (
     <Router>
       <Header />
