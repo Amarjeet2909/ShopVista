@@ -21,4 +21,4 @@ Starting with frontend:-
  npm i react-redux redux redux-thunk redux-devtools-extension :-
  npm i raect-router-dom  overlay-navbar :-
  npm install react-icons :- To Install Icons available in react
- npm i webfontloader :-
+ npm i webfontloader :- To use different fonts without using google fonts

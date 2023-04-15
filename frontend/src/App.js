@@ -1,5 +1,5 @@
 import './App.css';
-import Header from "./component/layout/Header.js";
+import Header from "./component/layout/Header/Header.js";
 import React from 'react';
 import { BrowserRouter as Router } from "react-router-dom";
 import WebFont from "webfontloader";
@@ -7,6 +7,7 @@ import Footer from "./component/layout/Footer/Footer.js";
 
 function App() {
 
+  // Loading the Web fonts of webfontloader
   React.useEffect(() => {
     WebFont.load({
       google: {
