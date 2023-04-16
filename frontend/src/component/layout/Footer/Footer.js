@@ -9,10 +9,25 @@ const Footer = () => {
             <div class="leftFooter">
                 <h4>DOWNLOAD OUR APP</h4>
                 <p>Download App from Andriod and IOS mobile phone</p>
-                
+                <img src={playStore} alt="playstore"/>
+                <img src={appStore} alt="appstore"/>
+            </div>
+
+            <div class="midFooter">
+                <h1>ECOMMERCE</h1>
+                <p>Customer satisfaction is our motto</p>
+
+                <p>Copyrights 2023 &copy; Amarjeet Singh</p>
+            </div>
+
+            <div class="rightFooter">
+                <h4>Follow Us</h4>
+                <a href="https://www.linkedin.com/in/amarjeet-cse/">Linkedin</a>
+                <a href="https://github.com/Amarjeet2909">GitHub</a>
+                <a href="https://leetcode.com/Amarjeet2909/">LeetCode</a>
             </div>
         </footer>
-    )
-}
+    );
+};
 
 export default Footer;
