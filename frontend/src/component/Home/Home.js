@@ -1,6 +1,15 @@
 import React, { fragment } from "react";
 import { CgMouse } from "react-icons/all";
 import "./Home.css";
+import Product from "./Product.js";
+
+
+const product = {
+    name: "Blue TShirt",
+    images: [{url: "https://www.cit.ac.in"}],
+    price: "3000",
+    _id: "Amarjeet",
+};
 
 /**
 React Fragment is a feature in React that allows you to return multiple elements from a React component by allowing 
@@ -20,6 +29,8 @@ const Home = () => {
                 </a>
             </div>
         </fragment>
+
+
     );
 };
 
