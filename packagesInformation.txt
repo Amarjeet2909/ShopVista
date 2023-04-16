@@ -22,3 +22,4 @@ Starting with frontend:-
  npm i raect-router-dom  overlay-navbar :-
  npm install react-icons :- To Install Icons available in react
  npm i webfontloader :- To use different fonts without using google fonts
+ npm install react-rating-stars-component --save :- To show ratings
