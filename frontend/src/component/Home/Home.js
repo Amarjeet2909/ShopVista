@@ -1,7 +1,8 @@
-import React, { Fragment , useEffect } from "react";
+import React, { Fragment } from "react";
 import { CgMouse } from "react-icons/all";
 import "./Home.css";
 import Product from "./Product.js"
+import MetaData from "../layout/MetaData.js";
 
 const product = {
     name: "White Pant",
@@ -17,6 +18,8 @@ you to group a list of children without adding extra nodes to the DOM
 const Home = () => {
         return (
         <Fragment>
+            <MetaData title="ECOMMERCE" />
+
             <div className="banner">
                 <p>Welcome to ECOMMERCE</p>
                 <h1>FIND AMAZING PRODUCTS BELOW</h1>

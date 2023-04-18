@@ -17,7 +17,8 @@ function App() {
     });
   }, []);
 
-  // Returning Header and Footer file imported above
+  // Returning Header and Footer file and Home Page imported above
+  // <Route> should be child of <Routes>
   return (
     <Router>
       <Header />

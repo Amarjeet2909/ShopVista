@@ -11,6 +11,7 @@ const options = {
     isHalf: true, 
 };
 
+// product is a object defined in Home.js
 const Product = ({ product }) => {
     return (
         <Link className="productCard" to={product._id}>
