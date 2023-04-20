@@ -1,3 +1,4 @@
+//Axios is an HTTP client library that allows you to make requests to a given endpoint
 import axios from "axios";
 
 import {
@@ -6,6 +7,9 @@ import {
     ALL_PRODUCT_SUCCESS,
     CLEAR_ERRORS,
 } from "../constants/productConstant.js";
+
+//dispatch() is the method used to dispatch actions and trigger state changes to the store. react-redux is simply 
+//trying to give convenient access to it.
 
 export const getProduct = () => async (dispatch) => {
     try {

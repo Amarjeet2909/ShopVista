@@ -25,7 +25,7 @@ exports.createProduct = catchAsyncErrors(async (req,res,next) =>{
 exports.getAllProducts = catchAsyncErrors(async(req,res) =>{
     // countDocuments() is an MongoDB fun
     const productCount = await Product.countDocuments();
-    const resultPerPage = 5;
+    const resultPerPage = 8;
     // It's an API feature for searching items by keyword
     const apiFeature = new ApiFeatures(Product.find(), req.query)
     .search()
