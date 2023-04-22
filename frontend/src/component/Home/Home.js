@@ -6,13 +6,13 @@ import MetaData from "../layout/MetaData.js";
 import { getProduct } from "../../actions/productAction.js";
 import { useSelector, useDispatch } from "react-redux";
 
-const product = {
+/* const product = {
     name: "White Pant",
     images: [{ url: "https://i.ibb.co/DRST11n/1.webp" }],
     price: "3000",
     _id: "Amarjeet",
 };
-
+*/
 /**
 React Fragment is a feature in React that allows you to return multiple elements from a React component by allowing 
 you to group a list of children without adding extra nodes to the DOM
