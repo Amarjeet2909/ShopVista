@@ -23,6 +23,5 @@
     "react-rating-stars-component": "^2.2.0",
     "validator": "^13.9.0",
     "vscode-dotenv": "^1.0.1"
-  },
-  "proxy": "http://192.168.56.1:4000"
+  }
 }
