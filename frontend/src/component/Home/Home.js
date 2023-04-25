@@ -5,7 +5,8 @@ import Product from "./Product.js"
 import MetaData from "../layout/MetaData.js";
 import { getProduct } from "../../actions/productAction.js";
 import { useSelector, useDispatch } from "react-redux";
-
+import Loader from "../layout/Loader/Loader";
+import { useAlert } from "react-alert";
 
 /**
 React Fragment is a feature in React that allows you to return multiple elements from a React component by allowing 
@@ -13,18 +14,22 @@ you to group a list of children without adding extra nodes to the DOM
  */
 const Home = () => {
 
+        const alert = useAlert();
         const dispatch = useDispatch();
         const { loading, error, products, productsCount } = useSelector(
             (state) => state.products
         );
         useEffect(() => {
+            if (error) {
+                return alert.error(error);
+            }
             dispatch(getProduct());
-        }, [dispatch]);
+        }, [dispatch, error, alert]);
 
         return (
             <Fragment>
                 {loading ? (
-                    "loading"
+                    <Loader />
                 ) : (        <Fragment>
             <MetaData title="ECOMMERCE" />
 

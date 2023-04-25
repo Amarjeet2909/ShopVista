@@ -23,3 +23,5 @@ Starting with frontend:-
  npm install react-icons :- To Install Icons available in react
  npm i webfontloader :- To use different fonts without using google fonts
  npm install react-rating-stars-component --save :- To show ratings
+ npm i react-material-ui-carousel: Material-UI is simply a library that allows us to import and use different components 
+ to create a user interface in our React applications.

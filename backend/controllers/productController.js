@@ -23,6 +23,7 @@ exports.createProduct = catchAsyncErrors(async (req,res,next) =>{
 
 // Get All product
 exports.getAllProducts = catchAsyncErrors(async(req,res) =>{
+
     // countDocuments() is an MongoDB fun
     const productCount = await Product.countDocuments();
     const resultPerPage = 8;
