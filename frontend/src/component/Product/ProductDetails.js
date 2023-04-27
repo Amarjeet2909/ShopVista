@@ -3,20 +3,20 @@ import Carousel from "react-material-ui-carousel";
 import "./ProductDetails.css";
 import { useSelector, useDispatch } from "react-redux";
 import { getProductDetails } from "../../actions/productAction.js";
-
+import { useParams } from 'react-router-dom';
 
 
 const ProductDetails = ({match}) => {
 
     const dispatch = useDispatch();
-
+    const { id } = useParams();
     const { product, loading, error } = useSelector(
         (state) => state.productDetails
     );
 
     useEffect(() => {
-        dispatch(getProductDetails(this.props.match.params.id));
-    }, [dispatch, this.props.match.params.id]);
+        dispatch(getProductDetails(id));
+    }, [dispatch, id]);
     return (
         <Fragment>
             <div className="ProductDetails">
