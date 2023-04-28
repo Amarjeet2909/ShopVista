@@ -1,12 +1,10 @@
-
-
 .ProductDetails {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(233, 224, 224) ;
     width: 100vw;
     max-width: 100%;
     padding: 6vmax;
-    display: flex;
     box-sizing: border-box;
+    display: flex;
   }
 
   .ProductDetails > div {
@@ -24,12 +22,15 @@
   }
   
   .CarouselImage {
-    width: 20vmax;
+    padding-left: 4.5vmax;
+    width: 30vmax;
+    height: 40vmax;
   }
   
   .detailsBlock-1 > h2 {
     color: rgb(54, 54, 54);
     font: 600 1.6vmax "Roboto";
+    margin-bottom: 1vmax;
   }
   
   .detailsBlock-1 > p {
@@ -44,7 +45,7 @@
     border-top: 1px solid rgba(0, 0, 0, 0.205);
     border-bottom: 1px solid rgba(0, 0, 0, 0.205);
     width: 70%;
-    padding: 1vmax 0;
+    padding: 0.5vmax 0;
   }
   
   .detailsBlock-2-span {
@@ -68,27 +69,30 @@
   
   .detailsBlock-3-1-1 > button {
     border: none;
-    background-color: rgba(0, 0, 0, 0.616);
+    background-color: goldenrod;
     padding: 0.5vmax;
+    margin-top: 2vmax;
+    margin-bottom: 2vmax;
     cursor: pointer;
     color: white;
     transition: all 0.5s;
   }
   .detailsBlock-3-1-1 > button:hover {
+    transform: scale(1.05vmax);
     background-color: rgba(0, 0, 0, 0.767);
   }
   
   .detailsBlock-3-1-1 > input {
     border: none;
     padding: 0.5vmax;
-    width: 1vmax;
+    width: 1.5vmax;
     text-align: center;
     outline: none;
-    font: 400 0.8vmax "Roboto";
+    font: 600 1vmax "Roboto";
     color: rgba(0, 0, 0, 0.74);
   }
   
-  .detailsBlock-3-1 > button:last-child {
+  .Addtocart {
     border: none;
     cursor: pointer;
     color: white;

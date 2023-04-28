@@ -51,7 +51,10 @@ const ProductDetails = ({match}) => {
                     </div>
                     <div className="detailsBlock-2">
                         <ReactStars {...options}/>{" "}
-                        <span> ({product.numOfReviews} Reviews)</span>
+                        <span className="detailsBlock-2-span">
+                        {" "}
+                        ({product.numOfReviews} Reviews)
+                    </span>
                     </div>
                     <div classname="detailsBlock-3">
                         <h1>{`₹${product.price}`}</h1>
@@ -60,12 +63,12 @@ const ProductDetails = ({match}) => {
                                 <button>-</button>
                                 <input value="1" type="number" />
                                 <button>+</button>
-                            </div>{" "}
-                            <button>Add to Cart</button>
+                            </div>
+                            <button className="Addtocart">Add to Cart</button>
                         </div>
 
                         <p>
-                            Status:{" "}
+                            Status:
                             <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
                                 {product.Stock < 1 ? "OutOfStock" : "InStock"}
                             </b>
