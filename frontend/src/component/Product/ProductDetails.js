@@ -57,20 +57,20 @@ const ProductDetails = ({match}) => {
                     </span>
                     </div>
                     <div classname="detailsBlock-3">
-                        <h1>{`₹${product.price}`}</h1>
+                        <h1 className="price">{`₹${product.price}`}</h1>
                         <div classname="detailsBlock-3-1">
                             <div className="detailsBlock-3-1-1">
-                                <button>-</button>
+                                <button className="addsub">-</button>
                                 <input value="1" type="number" />
-                                <button>+</button>
+                                <button className="addsub">+</button>
+                                <button className="Addtocart">Add to Cart</button>
                             </div>
-                            <button className="Addtocart">Add to Cart</button>
                         </div>
 
-                        <p>
+                        <p className="stockstatus">
                             Status:
                             <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
-                                {product.Stock < 1 ? "OutOfStock" : "InStock"}
+                                {product.Stock < 1 ? " Out Of Stock" : " In Stock"}
                             </b>
                         </p>
                     </div>
@@ -78,7 +78,6 @@ const ProductDetails = ({match}) => {
                     <div className="detailsBlock-4">
                         Description: <p>{product.description}</p>
                     </div>
-
                     <button className="submitReview">Submit Review</button>
 
                 </div>

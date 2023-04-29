@@ -14,7 +14,6 @@
     align-items: center;
     padding: 2vmax;
     box-sizing: border-box;
-    border: 1px solid white;
   }
   
   .ProductDetails > div:last-child {
@@ -62,33 +61,40 @@
     font: 400 1.8vmax "Franklin Gothic Medium";
     margin: 1vmax 0;
   }
+
+.price {
+  margin-top: 1vmax;
+  margin-bottom: 1vmax;
+}
+
   .detailsBlock-3-1 {
     display: flex;
     align-items: center;
   }
   
-  .detailsBlock-3-1-1 > button {
+  .addsub {
     border: none;
-    background-color: goldenrod;
-    padding: 0.5vmax;
-    margin-top: 2vmax;
+    background-color: black;
+    padding: 0.4vmax;
+    margin-top: 1vmax;
     margin-bottom: 2vmax;
     cursor: pointer;
     color: white;
     transition: all 0.5s;
   }
-  .detailsBlock-3-1-1 > button:hover {
-    transform: scale(1.05vmax);
-    background-color: rgba(0, 0, 0, 0.767);
+
+  .addsub:hover {
+    transform: scale(2vmax);
+    background-color: red;
   }
   
   .detailsBlock-3-1-1 > input {
     border: none;
-    padding: 0.5vmax;
+    padding: 0.4vmax;
     width: 1.5vmax;
     text-align: center;
     outline: none;
-    font: 600 1vmax "Roboto";
+    font: 500 1vmax "Roboto";
     color: rgba(0, 0, 0, 0.74);
   }
   
@@ -97,21 +103,24 @@
     cursor: pointer;
     color: white;
     transition: all 0.5s;
-    background-color: tomato;
-    font: 500 0.7vmax "Roboto";
+    background-color: crimson;
+    font: 500 1.2vmax "Roboto";
     border-radius: 20px;
-    padding: 0.5vmax 2vmax;
-    margin: 1vmax;
+    padding: 0.3vmax 2vmax;
+    margin-left: 4vmax;
     outline: none;
   }
   
-  .detailsBlock-3-1 > button:last-child:hover {
-    background-color: rgb(214, 84, 61);
+  .Addtocart:hover {
+    background-color: rgba(255,255,255,0.5);
+    color: crimson;
+    transform: scale(1.1);
+    border: 1px solid crimson;
   }
   
-  .detailsBlock-3 > p {
-    border-top: 1px solid rgba(0, 0, 0, 0.205);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.205);
+  .stockstatus {
+    border-top: 0.3px solid rgba(0,0,0,0.205);
+    border-bottom: 0.3px solid rgba(0,0,0,0.205);
     padding: 1vmax 0;
     color: rgba(0, 0, 0, 0.651);
     font: 400 1vmax "Roboto";
@@ -121,19 +130,20 @@
   .detailsBlock-4 {
     color: rgba(0, 0, 0, 0.897);
     font: 500 1.2vmax sans-serif;
+    font-weight: bold;
   }
   
   .detailsBlock-4 > p {
     color: rgba(0, 0, 0, 0.534);
-    font: 300 0.8vmax sans-serif;
+    font: 300 1.2vmax sans-serif;
   }
-  
+
   .submitReview {
     border: none;
-    background-color: tomato;
-    font: 500 0.7vmax "Roboto";
+    background-color: crimson;
+    font: 300 1.3vmax "Roboto";
     border-radius: 20px;
-    padding: 0.6vmax 2vmax;
+    padding: 0.2vmax 1vmax;
     margin: 1vmax 0;
     color: white;
     cursor: pointer;
