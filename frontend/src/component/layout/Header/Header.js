@@ -12,7 +12,7 @@ const options = {
   SearchIconElement:MdSearch,
   cartIcon:true,
   CartIconElement:MdAddShoppingCart,
-  burgerColor: "yellow",
+  burgerColor: "red",
   burgerColorHover: "#eb4034",
   logo,
   logoWidth: "20vmax",

@@ -25,3 +25,4 @@ Starting with frontend:-
  npm install react-rating-stars-component --save :- To show ratings
  npm i react-material-ui-carousel: Material-UI is simply a library that allows us to import and use different components 
  to create a user interface in our React applications.
+ npm install @mui/material :- To show rating of particular product in their page

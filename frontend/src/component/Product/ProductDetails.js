@@ -4,9 +4,11 @@ import "./ProductDetails.css";
 import { useSelector, useDispatch } from "react-redux";
 import { getProductDetails } from "../../actions/productAction.js";
 import { useParams } from 'react-router-dom';
-import ReactStars from "react-rating-stars-component";
+import { Rating } from '@mui/material';
+import ReviewCard from "./ReviewCard.js";
+import Loader from "../layout/Loader/Loader";
 
-const ProductDetails = ({match}) => {
+const ProductDetails = ({ match }) => {
 
     const dispatch = useDispatch();
     const { id } = useParams();
@@ -20,15 +22,19 @@ const ProductDetails = ({match}) => {
 
     const options = {
         edit: false,
-        color: "rgba(20,20,20,0.1)",
-        activeColor: "tomato",
-        size: window.innerWidth < 600 ? 20 : 25 ,
+        size: "medium",
         value: product.ratings,
-        isHalf: true,
+        readOnly: true,
+        precision: 0.5,
+        isHalf: true, 
     };
 
     return (
         <Fragment>
+            {loading? (
+            <Loader /> 
+            ) : (
+            <Fragment>
             <div className="ProductDetails">
                 <div>
                     <Carousel>
@@ -50,10 +56,10 @@ const ProductDetails = ({match}) => {
                         <p>Product # {product._id}</p>
                     </div>
                     <div className="detailsBlock-2">
-                        <ReactStars {...options}/>{" "}
+                    <Rating className='detailsBlock-2-span' {...options}/>
                         <span className="detailsBlock-2-span">
                         {" "}
-                        ({product.numOfReviews} Reviews)
+                        ({product.noOfReviews} Reviews)
                     </span>
                     </div>
                     <div classname="detailsBlock-3">
@@ -83,6 +89,19 @@ const ProductDetails = ({match}) => {
                 </div>
 
             </div>
+
+            <h3 className="reviewsHeading">REVIEWS</h3>
+
+            {product.reviews && product.reviews[0] ? (
+                <div className="reviews">
+                    {product.reviews && product.reviews.map((review) => <ReviewCard review={review} />)}
+                </div>
+            ) : (
+                <p className="noReviews">No Reviews Yet</p>
+            )}
+
+        </Fragment>
+        )};
         </Fragment>
     );
 };
