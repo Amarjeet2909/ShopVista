@@ -51,7 +51,7 @@ export const getProductDetails = (id) => async (dispatch) => {
     }
 };
 
-// Clearing Errors
+// Clearing Errors once Error message displayed
 export const clearErrors = () => async (dispatch) => {
     dispatch({ type: CLEAR_ERRORS });
 };

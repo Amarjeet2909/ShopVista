@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 
 // product is a object defined in Home.js
-const Product = ({ product }) => {
+const ProductCard = ({ product }) => {
 
     const options = {
         edit: false,
@@ -26,4 +26,4 @@ const Product = ({ product }) => {
     );
 };
 
-export default Product;
+export default ProductCard;

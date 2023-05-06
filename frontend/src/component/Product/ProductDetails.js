@@ -2,28 +2,35 @@ import React, { Fragment, useEffect, useState } from "react";
 import Carousel from "react-material-ui-carousel";
 import "./ProductDetails.css";
 import { useSelector, useDispatch } from "react-redux";
-import { getProductDetails } from "../../actions/productAction.js";
+import { clearErrors, getProductDetails } from "../../actions/productAction.js";
 import { useParams } from 'react-router-dom';
 import { Rating } from '@mui/material';
 import ReviewCard from "./ReviewCard.js";
 import Loader from "../layout/Loader/Loader";
+import { useAlert } from "react-alert";
 
 const ProductDetails = ({ match }) => {
 
     const dispatch = useDispatch();
     const { id } = useParams();
+    const alert = useAlert();
+
     const { product, loading, error } = useSelector(
         (state) => state.productDetails
     );
 
     useEffect(() => {
+        if (error){
+            alert.error(error);
+            dispatch(clearErrors);
+        }
         dispatch(getProductDetails(id));
     }, [dispatch, id]);
 
     const options = {
         edit: false,
         size: "medium",
-        value: product.ratings,
+        value: product.rating,
         readOnly: true,
         precision: 0.5,
         isHalf: true, 
