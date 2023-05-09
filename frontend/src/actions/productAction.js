@@ -14,11 +14,13 @@ import {
 //dispatch() is the method used to dispatch actions and trigger state changes to the store. react-redux is simply 
 //trying to give convenient access to it.
 
-export const getProduct = () => async (dispatch) => {
+export const getProduct = (keyword = "") => async (dispatch) => {
     try {
         dispatch({ type: ALL_PRODUCT_REQUEST });
 
-        const { data } = await axios.get("/api/v1/products");
+        let link = `/api/v1/products?keyword=${keyword}`;
+
+        const { data } = await axios.get(link);
 
         dispatch({
             type: ALL_PRODUCT_SUCCESS,
