@@ -26,3 +26,4 @@ Starting with frontend:-
  npm i react-material-ui-carousel: Material-UI is simply a library that allows us to import and use different components 
  to create a user interface in our React applications.
  npm install @mui/material :- To show rating of particular product in their page
+ npm i react-js-pagination :- To add pagination in website
