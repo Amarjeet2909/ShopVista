@@ -5,7 +5,7 @@ import { clearErrors, getProduct } from "../../actions/productAction.js";
 import Loader from "../layout/Loader/Loader.js";
 import ProductCard from "../Home/productCard.js";
 import { useParams } from 'react-router-dom';
-import pagination from 'react-js-pagination';
+import Pagination from "react-js-pagination";
 
 // Function to show all products available
 const Products = ({match}) => {
@@ -20,12 +20,12 @@ const Products = ({match}) => {
     );
 
     const setCurrentPageNo = (e)=> {
-        setCurrentPage(e)
-    }
+        setCurrentPage(e);
+    };
 
     useEffect(() => {
-        dispatch(getProduct(keyword));
-    }, [dispatch,keyword]);
+        dispatch(getProduct(keyword, currentPage));
+    }, [dispatch,keyword,currentPage]);
 
     return (
         <Fragment>
@@ -43,29 +43,27 @@ const Products = ({match}) => {
                             ))}
                     </div>
 
-                    <div className="paginationBox">
-                        <pagination
-                            activePage={currentPage}
-                            itemsCountPerPage={resultPerPage}
-                            totalItemsCount={productsCount}
-                            onChange={setCurrentPageNo}
-                            nextPageText="Next"
-                            prevPageText="Prev"
-                            firstPageText="1st"
-                            lastPageText="Last"
-                            itemClass="page-item"
-                            linkClass="page-link"
-                            activeClass="pageItemAvtive"
-                            activeLinkClass="pageLinkActive"
-                        >
-                        </pagination>
-
-                    </div>
-
+                <div className="paginationBox">
+                <Pagination
+                activePage={currentPage}
+                itemsCountPerPage={resultPerPage}
+                totalItemsCount={productsCount}
+                onChange={setCurrentPageNo}
+                nextPageText="Next"
+                prevPageText="Prev"
+                firstPageText="1st"
+                lastPageText="Last"
+                itemClass="page-item"
+                linkClass="page-link"
+                activeClass="pageItemActive"
+                activeLinkClass="pageLinkActive"
+                />
+                </div>
+                                
                 </Fragment>
             )}
         </Fragment>
     );
-}
+};
 
 export default Products;
