@@ -9,7 +9,6 @@ import Slider from "@material-ui/core/Slider";
 import { useAlert } from "react-alert";
 import Typography from "@material-ui/core/Typography";
 import MetaData from "../layout/MetaData";
-import { useParams } from 'react-router-dom';
 
 const categories = [
   "Laptop",
@@ -42,7 +41,6 @@ const Products = ({ match }) => {
   } = useSelector((state) => state.products);
 
   //const keyword = match.params.keyword;
-  const { keyword } = useParams();
 
   const setCurrentPageNo = (e) => {
     setCurrentPage(e);
@@ -53,20 +51,14 @@ const Products = ({ match }) => {
   };
   let count = filteredProductsCount;
 
-  console.log("currentPage "+currentPage);
-  console.log("resultPerPage "+resultPerPage);
-  console.log("productsCount "+productsCount);
-  console.log("setCurrentPageNo "+setCurrentPageNo);
-  console.log("filteredProductsCount "+filteredProductsCount);
-
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
 
-    dispatch(getProduct(keyword, currentPage, price, category, ratings));
-  }, [dispatch, keyword, currentPage, price, category, ratings, alert, error]);
+    dispatch(getProduct(currentPage, price, category, ratings));
+  }, [dispatch, currentPage, price, category, ratings, alert, error]);
 
   return (
     <Fragment>

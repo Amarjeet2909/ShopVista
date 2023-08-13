@@ -22,25 +22,32 @@ exports.createProduct = catchAsyncErrors(async (req,res,next) =>{
 });
 
 // Get All product
-exports.getAllProducts = catchAsyncErrors(async(req,res) =>{
-
-    // countDocuments() is an MongoDB fun
-    const productCount = await Product.countDocuments();
+exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
     const resultPerPage = 8;
-    // It's an API feature for searching items by keyword
+    const productsCount = await Product.countDocuments();
+  
     const apiFeature = new ApiFeatures(Product.find(), req.query)
-    .search()
-    .filter()
-    .pagination(resultPerPage);
+      .search()
+      .filter();
+  
+    let products = await apiFeature.query;
+  
+    const filteredProductsCount = products.length;
+  
+    apiFeature.pagination(resultPerPage);
 
-    const products = await apiFeature.query;
+    console.log("Filter Count:", filteredProductsCount);
+  
+    //products = await apiFeature.query;
+  
     res.status(200).json({
-        success: true,
-        products,
-        productCount,
-        resultPerPage
+      success: true,
+      products,
+      productsCount,
+      resultPerPage,
+      filteredProductsCount,
     });
-});
+  });
 
 // Update the Product
 exports.updateProduct = catchAsyncErrors(async(req,res,next) =>{
