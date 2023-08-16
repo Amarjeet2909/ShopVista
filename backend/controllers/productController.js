@@ -28,24 +28,16 @@ exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
   
     const apiFeature = new ApiFeatures(Product.find(), req.query)
       .search()
-      .filter();
+      .filter()
+      .pagination(resultPerPage);
   
-    let products = await apiFeature.query;
-  
-    const filteredProductsCount = products.length;
-  
-    apiFeature.pagination(resultPerPage);
-
-    console.log("Filter Count:", filteredProductsCount);
-  
-    //products = await apiFeature.query;
+    const products = await apiFeature.query;
   
     res.status(200).json({
       success: true,
       products,
       productsCount,
       resultPerPage,
-      filteredProductsCount,
     });
   });
 
@@ -216,7 +208,7 @@ exports.deleteReview = catchAsyncErrors(async(req,res,next) => {
             ratings,
             noOfReviews,
         },
-        {
+        { 
             new: true,
             runValidators: true,
             useFindAndModify: false,
@@ -226,4 +218,4 @@ exports.deleteReview = catchAsyncErrors(async(req,res,next) => {
     res.status(200).json({
         success: true,
     });
-});
+}); 
