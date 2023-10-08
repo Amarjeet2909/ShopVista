@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState } from "react";
+import React, { Fragment, useRef, useState, useEffect } from "react";
 import "./LoginSignUp.css";
 import Loader from "../layout/Loader/Loader";
 import { Link } from "react-router-dom";
@@ -6,8 +6,18 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import FaceIcon from "@material-ui/icons/Face";
 
+import { useDispatch, useSelector } from "react-redux";
+import { clearErrors, login } from "../../actions/userAction";
+import { useAlert } from "react-alert";
 
 const LoginSignUp = () => {
+    const dispatch = useDispatch();
+    const alert = useAlert();
+
+    const { error, loading, isAuthenticated } = useSelector(
+        (state) => state.user
+        
+    );
 
     const loginTab = useRef(null);
     const registerTab = useRef(null);
@@ -27,8 +37,9 @@ const LoginSignUp = () => {
     const [avatar, setAvatar] = useState();
     const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
 
-    const loginSubmit = () => {
-        console.log("Login Form Submited");
+    const loginSubmit = (e) => {
+        e.preventDefault();
+        dispatch(login(loginEmail, loginPassword));
     };
 
     const registerSubmit = (e) => {
