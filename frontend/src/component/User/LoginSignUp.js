@@ -1,7 +1,7 @@
 import React, { Fragment, useRef, useState, useEffect } from "react";
 import "./LoginSignUp.css";
 import Loader from "../layout/Loader/Loader";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import FaceIcon from "@material-ui/icons/Face";
@@ -13,11 +13,11 @@ import { useAlert } from "react-alert";
 const LoginSignUp = () => {
     const dispatch = useDispatch();
     const alert = useAlert();
+    const history = useHistory();
 
     const { error, loading, isAuthenticated } = useSelector(
         (state) => state.user
-        
-    );
+    ); 
 
     const loginTab = useRef(null);
     const registerTab = useRef(null);
@@ -30,7 +30,7 @@ const LoginSignUp = () => {
         name: "",
         email: "",
         password: "",
-    });
+    }); 
 
     const { name, email, password } = user;
 
@@ -71,6 +71,17 @@ const LoginSignUp = () => {
         }
     };
 
+    useEffect(() => {
+        if(error) {
+            alert.error(error);
+            dispatch(clearErrors());
+        }
+
+        if(isAuthenticated) {
+            history.push("/account");
+        }
+    }, [dispatch, error, alert]);
+
     const switchTabs = (e, tab) => {
         if(tab === "login") {
             switcherTab.current.classList.add("shiftToNeutral");
@@ -90,6 +101,7 @@ const LoginSignUp = () => {
 
     return (
         <Fragment>
+           {loading?<Loader /> : <Fragment>
             <div className="LoginSignUpContainer">
                 <div className="LoginSignUpBox">
                     <div>
@@ -102,7 +114,7 @@ const LoginSignUp = () => {
                     <form className="loginForm" ref={loginTab} onSubmit={loginSubmit}>
                         <div className="loginEmail">
                             <MailOutlineIcon />
-                            <input
+                            <input 
                                type="email"
                                placeholder="Email"
                                required
@@ -165,6 +177,7 @@ const LoginSignUp = () => {
                     </form>
                 </div>
             </div>
+        </Fragment>}
         </Fragment>
     );
 };

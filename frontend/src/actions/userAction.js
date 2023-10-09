@@ -18,3 +18,8 @@ export const login = (email, password) => async (dispatch) => {
         dispatch({ type: LOGIN_FAIL, payload: error.response.data.message });
     }
     };
+
+    // Clearing Errors
+export const clearErrors = () => async (dispatch) => {
+    dispatch({ type: CLEAR_ERRORS });
+  };
