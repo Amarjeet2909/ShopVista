@@ -12,7 +12,7 @@ npm i cookie-parser:- for storing JSON web token in cookies
 npm i body-parser:- Body-parser parses is an HTTP request body that usually helps when you need to know more than just the URL being hit.
 
 ------------------------------------------------------------------------------------------------------------------------------------------
-Starting with frontend:-
+Starting with frontend:- 
 
  npx create-react-app . :- To create React App (Given . because we want to craete the app just inside our frontend folder)
  npm start :- To start the React Server
