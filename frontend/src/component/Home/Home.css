@@ -19,7 +19,7 @@
   }
   
   .banner > p {
-    font: 300 1.4vmax "Lucida Sans";
+    font: 900 1.9vmax "Lucida Sans";
   }
   
   .banner > a > button {
@@ -46,7 +46,7 @@
     position: absolute;
     top: 0%;
     left: 0;
-    clip-path: polygon(100% 68%, 0 100%, 100% 100%);
+    clip-path: polygon(100% 100%, 0 100%, 100% 100%);
     max-width: 100%;
   }
   

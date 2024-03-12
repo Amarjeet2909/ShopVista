@@ -33,7 +33,6 @@ function App() {
             <Route path='/products/:keyword' Component={Products} />
             <Route path='/search' element={<Search />} />
             <Route path="/login" element={<LoginSignUp/>} />
-            <Route path="/login-signup" component={LoginSignUpWithRouter} />
 
         </Routes>
       <Footer />

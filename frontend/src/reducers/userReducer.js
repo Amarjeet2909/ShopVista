@@ -17,9 +17,10 @@ export const userReducer = (state = { user: {} }, action) => {
         case LOGIN_FAIL: 
             return {
                 ...state,
-                laoding: false,
-                isAuthenticated: true,
-                user: action.payload,
+                loading: false,
+                isAuthenticated: false,
+                user: null,
+                error: action.payload,
             };
         case CLEAR_ERRORS:
             return {
@@ -27,6 +28,6 @@ export const userReducer = (state = { user: {} }, action) => {
                 error: null,
             };
         default:
-            break;
+            return state;
     }
 };

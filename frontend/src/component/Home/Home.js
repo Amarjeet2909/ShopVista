@@ -35,8 +35,8 @@ const Home = () => {
             <MetaData title="ECOMMERCE" />
 
             <div className="banner">
-                <p>Welcome to ECOMMERCE</p>
-                <h1>FIND AMAZING PRODUCTS BELOW</h1>
+                <p>Welcome to ASTRO SWARG</p>
+                <h1>FIND AMAZING PUJA MATERIAL PRODUCTS HERE</h1>
 
                 <a href="#container">
                     <button>

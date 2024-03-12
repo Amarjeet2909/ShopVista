@@ -14,7 +14,7 @@ const Footer = () => {
             </div>
 
             <div className="midFooter">
-                <h1>ECOMMERCE</h1>
+                <h1>ASTROSWARG</h1>
                 <p>Customer satisfaction is our motto | One step ahead</p>
 
                 <p>Copyrights 2023 &copy; Amarjeet Singh</p>
