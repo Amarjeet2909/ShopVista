@@ -10,6 +10,7 @@ npm i validator:- to validate the fields for eg the email field should contain t
 npm i nodemailer:- for password reset process
 npm i cookie-parser:- for storing JSON web token in cookies
 npm i body-parser:- Body-parser parses is an HTTP request body that usually helps when you need to know more than just the URL being hit.
+npm i express-fileupload cloudinary:- To Handle Uploading Files
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 Starting with frontend:- 

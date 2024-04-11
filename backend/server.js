@@ -1,6 +1,7 @@
 const app = require("./app");
 
 const dotenv = require("dotenv");
+const cloudniary = require("cloudinary");
 const connectDatabase = require("./config/database")
 
 // Handling Uncaught Exception
@@ -15,6 +16,13 @@ dotenv.config({path:"backend/config/config.env"});
 
 // connecting to the database
 connectDatabase();
+
+// Clodinary call
+cloudniary.config({
+    cloud_name: process.env.CLOUDINARY_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+})
 
 const server = app.listen(process.env.PORT, ()=>{
     console.log(`Server is working on http://localhost:${process.env.PORT}`)
