@@ -1,7 +1,7 @@
 import './App.css';
 import Header from "./component/layout/Header/Header.js";
 import React from "react";
-import { BrowserRouter as Router , Routes ,Route } from "react-router-dom";
+import { BrowserRouter as Router , Routes ,Route, Navigate } from "react-router-dom";
 import WebFont from "webfontloader";
 import Footer from "./component/layout/Footer/Footer.js";
 import Home from "./component/Home/Home.js";
@@ -43,7 +43,16 @@ function App() {
             <Route path='/products/:keyword' Component={Products} />
             <Route path='/search' element={<Search />} />
             <Route path="/login" element={<LoginSignUp/>} />
-            <ProtectedRoute path='/account' element={<Profile />} />
+            
+            {isAuthenticated ? (
+            <>
+                <Route path="/account" element={<Profile />} />
+            </>
+            ) : (
+            <>
+                <Route path="/account" element={<Navigate to="/login" />} />
+            </>
+            )}
 
         </Routes>       
       <Footer />

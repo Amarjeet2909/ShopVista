@@ -3,6 +3,7 @@ const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
+const { type } = require("os");
 
 // Creating Schema for user 
 const userSchema = new mongoose.Schema({
@@ -39,6 +40,10 @@ const userSchema = new mongoose.Schema({
     role:{
         type: String,
         default: "user",
+    },
+    createdAt:{
+        type: Date,
+        default: Date.now,
     },
 
     resetPasswordToken: String,
