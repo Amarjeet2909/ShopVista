@@ -108,16 +108,7 @@ const UpdateProfile = ({ history }) => {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
-
-                <div id="updateProfileImage">
-                  <img src={avatarPreview} alt="Avatar Preview" />
-                  <input
-                    type="file"
-                    name="avatar"
-                    accept="image/*"
-                    onChange={updateProfileDataChange}
-                  />
-                </div>
+                {/* Profile Pic Updating will be done here - Backend Logic in Backend->Controller->userController needs to be modified*/}
                 <input
                   type="submit"
                   value="Update"

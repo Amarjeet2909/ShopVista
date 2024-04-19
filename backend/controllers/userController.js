@@ -209,33 +209,15 @@ exports.forgotPassword = catchAsyncErrors(async (req,res,next) => {
  // Update User Profile
 exports.updateProfile = catchAsyncErrors(async(req,res,next) => {
         // Creating object of data enetered by user 
-        const newUserData = {
+        const userData = {
             name: req.body.name,
             email: req.body.email,
         };
 
-        // Updating Avtar in Cloudinay Platform
-        if (req.body.avatar !== "") {
-            const user = await User.findById(req.user.id);
-
-            const imageId = user.avatar.public_id;
-
-            await cloudinary.v2.uploader.destroy(imageId);
-
-            const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-                folder: "avatars",
-                width: 150,
-                crop: "scale",
-            });
-
-            newUserData.avatar = {
-                public_id: myCloud.public_id,
-                url: myCloud.secure_url,
-            };
-        }
+        // Updating Avtar will be done later when will be dealing with Cloud
 
         // Finding the user in DB and updating the user profile with information contain in userData
-        const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+        const user = await User.findByIdAndUpdate(req.user.id, userData, {
             new: true,
             runValidators: true,
             useFindAndModify: false,

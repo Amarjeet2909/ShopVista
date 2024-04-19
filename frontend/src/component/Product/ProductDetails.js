@@ -36,7 +36,7 @@ const ProductDetails = ({ match }) => {
         precision: 0.5,
         isHalf: true, 
     };
-
+    console.log(product.name);
     return (
         <Fragment>
             {loading? (
