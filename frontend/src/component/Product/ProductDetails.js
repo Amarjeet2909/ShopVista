@@ -71,7 +71,7 @@ const ProductDetails = ({ match }) => {
                         ({product.noOfReviews} Reviews)
                     </span>
                     </div>
-                    <div classname="detailsBlock-3">
+                    <div className="detailsBlock-3">
                         <h1 className="price">{`₹${product.price}`}</h1>
                         <div classname="detailsBlock-3-1">
                             <div className="detailsBlock-3-1-1">
