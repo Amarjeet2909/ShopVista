@@ -97,9 +97,8 @@ exports.forgotPassword = catchAsyncErrors(async (req,res,next) => {
        req.protocol give http or https
        req.get("host") give localhost incase when hosting in local otherwise the other host name
     */
-    const resetPasswordUrl = `${req.protocol}://${req.get(
-        "host"     
-    )}/api/v1/password/reset/${resetToken}`;
+   // we have to chnage this during deployment
+    const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
 
     const message = `Your password reset token is :- \n\n ${resetPasswordUrl} \n\n If you have not requested this email, then
     please ignore it`;
