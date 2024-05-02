@@ -4,7 +4,7 @@ import Loader from "../layout/Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, resetPassword } from "../../actions/userAction";
 import { useAlert } from "react-alert";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import MetaData from "../layout/MetaData";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import LockIcon from "@material-ui/icons/Lock";
@@ -13,6 +13,7 @@ const ResetPassword = ({ history }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const { token } = useParams();
+  const navigate = useNavigate();
 
   const { error, success, loading } = useSelector(
     (state) => state.forgotPassword
@@ -44,7 +45,7 @@ const ResetPassword = ({ history }) => {
     if (success) {
       alert.success("Password Updated Successfully");
 
-      history.push("/login");
+      navigate("/account");
     }
   }, [dispatch, error, alert, history, success]);
 

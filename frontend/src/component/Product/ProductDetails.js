@@ -9,6 +9,7 @@ import ReviewCard from "./ReviewCard.js";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
 import MetaData from "../layout/MetaData";
+import { addItemsToCart } from "../../actions/cartAction.js"
 
 const ProductDetails = ({ match }) => {
 
@@ -36,7 +37,23 @@ const ProductDetails = ({ match }) => {
         precision: 0.5,
         isHalf: true, 
     };
-    console.log(product.name);
+    
+    const [quantity, setQuantity] = useState(1);
+
+    const increaseQuantity = () => {
+        if (product.stock <= quantity) return;
+
+        const qty = quantity + 1;
+        setQuantity(qty);
+    }
+
+    const decreaseQuantity = () => {
+        if (1 >= quantity) return;
+
+        const qty = quantity - 1;
+        setQuantity(qty);
+    }
+
     return (
         <Fragment>
             {loading? (
@@ -75,9 +92,9 @@ const ProductDetails = ({ match }) => {
                         <h1 className="price">{`₹${product.price}`}</h1>
                         <div classname="detailsBlock-3-1">
                             <div className="detailsBlock-3-1-1">
-                                <button className="addsub">-</button>
-                                <input value="1" type="number" />
-                                <button className="addsub">+</button>
+                                <button className="addsub" onClick={decreaseQuantity}>-</button>
+                                <input readOnly value={quantity} type="number" />
+                                <button className="addsub" onClick={increaseQuantity}>+</button>
                                 <button className="Addtocart">Add to Cart</button>
                             </div>
                         </div>

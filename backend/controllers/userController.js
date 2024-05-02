@@ -150,7 +150,7 @@ exports.forgotPassword = catchAsyncErrors(async (req,res,next) => {
         }
 
         // when password doesn't match confirm password field
-        if(req.body.password !== req.body.confirmpassword)
+        if(req.body.password !== req.body.confirmPassword)
         {
             return next(new ErrorHandler("Password doesn't match", 400));
         }
@@ -163,7 +163,13 @@ exports.forgotPassword = catchAsyncErrors(async (req,res,next) => {
         // saving the changes in DB
         user.save();
 
-        sendToken(user, 200, res);
+        //sendToken(user, 200, res);
+        
+        // Responding with a success message
+        res.status(200).json({
+            success: true,
+            message: "Password reset successfully."
+        });
  });
 
 
