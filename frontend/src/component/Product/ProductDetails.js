@@ -54,6 +54,11 @@ const ProductDetails = ({ match }) => {
         setQuantity(qty);
     }
 
+    const addToCartHandler = () => {
+        dispatch(addItemsToCart(id, quantity));
+        alert.success("Item Added To Cart");
+    };
+
     return (
         <Fragment>
             {loading? (
@@ -95,7 +100,7 @@ const ProductDetails = ({ match }) => {
                                 <button className="addsub" onClick={decreaseQuantity}>-</button>
                                 <input readOnly value={quantity} type="number" />
                                 <button className="addsub" onClick={increaseQuantity}>+</button>
-                                <button className="Addtocart">Add to Cart</button>
+                                <button onClick={addToCartHandler} className="Addtocart">Add to Cart</button>
                             </div>
                         </div>
 

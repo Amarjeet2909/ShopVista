@@ -16,7 +16,7 @@ import {
         name: data.product.name,
         price: data.product.price,
         image: data.product.images[0].url,
-        stock: data.product.Stock,
+        stock: data.product.stock,
         quantity,
       },
     });
@@ -24,7 +24,7 @@ import {
     localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
   };
   
-  // REMOVE FROM CART
+// Remove cart Items
   export const removeItemsFromCart = (id) => async (dispatch, getState) => {
     dispatch({
       type: REMOVE_CART_ITEM,
@@ -34,7 +34,7 @@ import {
     localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
   };
   
-  // SAVE SHIPPING INFO
+   // SAVE SHIPPING INFO
   export const saveShippingInfo = (data) => async (dispatch) => {
     dispatch({
       type: SAVE_SHIPPING_INFO,
@@ -42,4 +42,4 @@ import {
     });
   
     localStorage.setItem("shippingInfo", JSON.stringify(data));
-  };
+  };  
