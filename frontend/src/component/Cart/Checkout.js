@@ -5,7 +5,7 @@ import LibraryAddCheckIcon from "@material-ui/icons/LibraryAddCheck";
 import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
 import "./CheckoutSteps.css";
 
-const CheckoutSteps = ({ activeStep }) => {
+const Checkoutsteps = ({ activeStep }) => {
   const steps = [
     {
       label: <Typography>Shipping Details</Typography>,
@@ -49,4 +49,4 @@ const CheckoutSteps = ({ activeStep }) => {
   );
 };
 
-export default CheckoutSteps;
+export default Checkoutsteps;

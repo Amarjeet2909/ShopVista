@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Shipping.css";
 import { useSelector, useDispatch } from "react-redux";
 import { saveShippingInfo } from "../../actions/cartAction";
@@ -11,9 +12,10 @@ import PhoneIcon from "@material-ui/icons/Phone";
 import TransferWithinAStationIcon from "@material-ui/icons/TransferWithinAStation";
 import { Country, State } from "country-state-city";
 import { useAlert } from "react-alert";
-import CheckoutSteps from "../Cart/CheckoutSteps";
+import CheckoutSteps from "./Checkout.js";
 
-const Shipping = ({ history }) => {
+const Shipping = ({ }) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const alert = useAlert();
   const { shippingInfo } = useSelector((state) => state.cart);
@@ -35,7 +37,7 @@ const Shipping = ({ history }) => {
     dispatch(
       saveShippingInfo({ address, city, state, country, pinCode, phoneNo })
     );
-    history.push("/order/confirm");
+    navigate("/order/confirm");
   };
 
   return (
