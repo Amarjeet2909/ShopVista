@@ -32,3 +32,4 @@ Starting with frontend:-
  npm i react-js-pagination :- To add pagination in website
  npm install @material-ui/core
  npm install country-state-city:- For getting list of All the countries and their states
+ npm install chart.js react-chartjs-2:- To draw chart by simply giving the values

@@ -40,7 +40,7 @@ const UserOptions = ({ user }) => {
 
     // Defining Functions
     function dashboard() {
-        navigate("dashboard");
+        navigate("/admin/dashboard");
     }
 
     function orders() {

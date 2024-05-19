@@ -30,6 +30,8 @@ import { loadStripe } from '@stripe/stripe-js';
 import OrderSuccess from "./component/Cart/OrderSuccess.js";
 import MyOrders from "./component/Order/MyOrders.js";
 import OrderDetails from "./component/Order/OrderDetails.js";
+import Dashboard from "./component/Admin/Dashboard.js";
+import ProductList from "./component/Admin/ProductList.js";
 
 function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
@@ -99,6 +101,8 @@ function PaymentWithStripe() {
             <Route path="/success" element={<OrderSuccess />} />
             <Route path="/orders" element={<MyOrders />} />
             <Route path="/orders/:id" element={<OrderDetails />} />
+            <Route path="/admin/dashboard" element={<Dashboard />} />
+            <Route path="/admin/products" element={<ProductList />} />
           </>
         ) : (
           <>
@@ -110,6 +114,8 @@ function PaymentWithStripe() {
             <Route path="/success" element={<Navigate to="/login" />} />
             <Route path="/orders" element={<Navigate to="/login" />} />
             <Route path="/orders/:id" element={<Navigate to="/login" />} />
+            <Route path="/admin/dashboard" element={<Navigate to="/login" />} />
+            <Route path="/admin/products" element={<Navigate to="/login" />} />
           </>
         )}
 
